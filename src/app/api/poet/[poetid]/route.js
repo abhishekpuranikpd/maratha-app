@@ -1,5 +1,5 @@
-import { getCurrentUser } from '../../../../../lib/session';
-import { db } from '../../../../../lib/db';
+import { getCurrentUser } from '../../../../lib/session';
+import { db } from '../../../../lib/db';
 import { NextResponse } from 'next/server';
 import { Post } from '@prisma/client';
 

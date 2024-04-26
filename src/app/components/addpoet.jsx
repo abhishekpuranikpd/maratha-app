@@ -38,7 +38,7 @@ const AddPoet = () => {
         alert("Poet Added!!");
         
 
-        router.push("/poets");
+        router.push("/poet");
       } else {
         alert("Failed to add poet: " + data.error);
       }

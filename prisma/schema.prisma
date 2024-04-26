@@ -59,6 +59,7 @@ model Shayari {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   PoetId      String   @db.ObjectId
+  isfeatured  Boolean @default(false)
   poet        Poet     @relation(fields: [PoetId], references: [id])
 }
 
@@ -72,6 +73,7 @@ model Poet {
   dieddate  DateTime?
   gender    Gender?  // Using the Gender enum type
   location  String?
+  isfeatured Boolean @default(true)
   Shayari          Shayari[]
 }
 

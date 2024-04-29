@@ -1,12 +1,12 @@
 import { redirect } from 'next/navigation'
 import React from 'react'
-import AddShayariForm from '../../../app/components/addshayari'
+import AddQuoteForm from '../../../app/components/addquote'
 import { getCurrentUser } from '../../../lib/session'
 
 
 
 
-const AddShayaripage = async () => {
+const AddQuotepage = async () => {
   const user = await getCurrentUser()
 
   if (!user) {
@@ -15,8 +15,8 @@ const AddShayaripage = async () => {
 
   return (
     <div className="bg-gray-700 min-h-screen">
-    <AddShayariForm/></div>
+    <AddQuoteForm/></div>
   )
 }
 
-export default AddShayaripage
+export default AddQuotepage

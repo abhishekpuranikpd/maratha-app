@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../lib/db";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 
-const AddShayariForm = () => {
+const AddPoemForm = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [isfeatured, setIsfeatured] = useState(false);
@@ -13,6 +12,7 @@ const AddShayariForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const router = useRouter();
+
 
 
   useEffect(() => {
@@ -41,18 +41,18 @@ const AddShayariForm = () => {
     formData.append("isfeatured", isfeatured);
   
     try {
-      const res = await fetch("/api/shayari", {
+      const res = await fetch("/api/poem", {
         method: "POST",
         body: formData,
       });
       const data = await res.json();
       if (data.success) {
-        alert("Shayari Added!!");
+        alert("Poem Added!!");
         
 
-        router.push("/poet");
+        router.push("/profile");
       } else {
-        alert("Failed to add Shayari: " + data.error);
+        alert("Failed to add Poem: " + data.error);
       }
 
 
@@ -66,7 +66,7 @@ const AddShayariForm = () => {
 
   return (
     <div className="container mx-auto mt-8 p-10 md:p-24">
-      <h2 className="text-2xl font-bold text-white mb-4">Add Shayari</h2>
+      <h2 className="text-2xl font-bold text-white mb-4">Add Poem</h2>
       {error && <div className="text-red-500 mb-4">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -135,16 +135,16 @@ const AddShayariForm = () => {
             Featured
           </label>
         </div>
-        <Button
+        <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
           disabled={loading}
         >
-          {loading ? "Adding..." : "Add Shayari"}
-        </Button>
+          {loading ? "Adding..." : "Add Poem"}
+        </button>
       </form>
     </div>
   );
 };
 
-export default AddShayariForm;
+export default AddPoemForm;

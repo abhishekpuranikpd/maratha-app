@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+
 const AddPoet = () => {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -9,6 +13,8 @@ const AddPoet = () => {
   const [borndate, setBornDate] = useState("");
   const [dieddate, setDiedDate] = useState("");
   const [gender, setGender] = useState("");
+  
+  const [isfeatured, setIsfeatured] = useState(false);
   const [location, setLocation] = useState("");
 
   const handleFileChange = (event) => {
@@ -27,6 +33,8 @@ const AddPoet = () => {
     formData.append("dieddate", dieddate);
     formData.append("gender", gender);
     formData.append("location", location);
+    
+    formData.append("isfeatured", isfeatured);
 
     try {
       const res = await fetch("/api/poet", {
@@ -48,15 +56,15 @@ const AddPoet = () => {
   };
 
   return (
-    <div className="flex justify-center bg-gray-700 items-center h-screen">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+    <div className="flex justify-center p-10 md:p-24 items-center h-screen ">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-4">
         <h1 className="text-3xl font-medium text-black mb-6">Add Poet</h1>
         <form noValidate action="" className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name" className="block mb-2 text-sm font-bold">
+            <Label htmlFor="name" className="block mb-2 text-sm font-bold ">
               Name
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="name"
               value={name}
@@ -66,10 +74,10 @@ const AddPoet = () => {
             />
           </div>
           <div>
-            <label htmlFor="image" className="block mb-2 text-sm font-bold">
+            <Label htmlFor="image" className="block mb-2 text-sm font-bold">
               Image
-            </label>
-            <input
+            </Label>
+            <Input
               type="file"
               name="file"
               onChange={handleFileChange}
@@ -77,10 +85,10 @@ const AddPoet = () => {
             />
           </div>
           <div>
-            <label htmlFor="borndate" className="block mb-2 text-sm font-bold">
+            <Label htmlFor="borndate" className="block mb-2 text-sm font-bold">
               Born Date
-            </label>
-            <input
+            </Label>
+            <Input
               type="date"
               name="borndate"
               value={borndate}
@@ -89,10 +97,10 @@ const AddPoet = () => {
             />
           </div>
           <div>
-            <label htmlFor="dieddate" className="block mb-2 text-sm font-bold">
+            <Label htmlFor="dieddate" className="block mb-2 text-sm font-bold">
               Died Date
-            </label>
-            <input
+            </Label>
+            <Input
               type="date"
               name="dieddate"
               value={dieddate}
@@ -101,9 +109,9 @@ const AddPoet = () => {
             />
           </div>
           <div>
-            <label htmlFor="gender" className="block mb-2 text-sm font-bold">
+            <Label htmlFor="gender" className="block mb-2 text-sm font-bold">
               Gender
-            </label>
+            </Label>
             <select
               name="gender"
               value={gender}
@@ -116,10 +124,10 @@ const AddPoet = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="location" className="block mb-2 text-sm font-bold">
+            <Label htmlFor="location" className="block mb-2 text-sm font-bold">
               Location
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="location"
               value={location}
@@ -128,6 +136,21 @@ const AddPoet = () => {
               className="w-full px-3 py-2 border rounded-md"
             />
           </div>
+          <div className="mb-4">
+          <label
+            htmlFor="isfeatured"
+            className="block text-white font-bold mb-2"
+          >
+            <input
+              type="checkbox"
+              id="isfeatured"
+              checked={isfeatured}
+              onChange={(e) => setIsfeatured(e.target.checked)}
+              className="mr-2"
+            />
+            Featured
+          </label>
+        </div>
           <div>
             <button
               type="submit"

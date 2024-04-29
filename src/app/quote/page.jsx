@@ -4,26 +4,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-const fetchShayaris = async () => {
+const featchquote = async () => {
   try {
-    const shayarisData = await db.Shayari.findMany({
-     include : {
-      poet :true,
-     }
+    const quotedata = await db.Quote.findMany({
+     
     });
-    console.log(shayarisData);
-    return shayarisData;
+    console.log(quotedata);
+    return quotedata;
   } catch (error) {
-    console.error('Error fetching shayaris:', error);
+    console.error('Error fetching Quotes:', error);
+    return []; // Return an empty array in case of an error
   }
 };
 
-export default async function Shayari() {
-  const shayaris = await fetchShayaris();
+
+export default async function Quote() {
+  const quotedata = await featchquote();
 
   return (
     <div className="flex flex-wrap md:flex justify-between md:p-2 rounded-full">
-    {shayaris.map(data => (
+    {quotedata.map(data => (
       <div key={data.id} className="w-full md:w-1/3 p-3">
         <div className="rounded-lg border-2 bg-opacity-100">
           <div className="text-center text-neutral-content rounded-lg h-full">
@@ -33,6 +33,7 @@ export default async function Shayari() {
                 {data.description}
               </p>
               <p className="font-sans text-end mr-4 text-black pb-2">
+            {data.category}
               </p>
             </div>
           </div>

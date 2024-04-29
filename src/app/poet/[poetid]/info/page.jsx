@@ -1,5 +1,5 @@
 import React from "react";
-import { db } from "../../../lib/db";
+import { db } from "../../../../lib/db";
 import Image from "next/image";
 import {
   Card,
@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import PoetNav from "../../components/poetnav";
+import PoetNav from "../../../components/poetnav";
 
 const PoetView = async ({ params }) => {
   const poetid = params.poetid;
@@ -88,73 +88,7 @@ const PoetView = async ({ params }) => {
           <PoetNav poetid={poetid} />
         </div>
       </div>
-      <div className="container mx-auto w-full h-full">
-      <div className="">
-        {" "}
-        <div className="flex flex-col text-center w-full ">
-         
-                <h1 className="sm:text-3xl text-2xl font-serif font-semibold title-font pt-1 text-red-600">
-            Shayari
-          </h1>
-          <hr
-            className="w-48 h-1 mx-auto my-4 rounded border-collapse"
-            style={{ backgroundColor: "red" }}
-          />
-        </div>
-        <div className="flex flex-wrap md:flex justify-between p-2 md:p-6">
-          {data.Shayari.slice(0, 10).map((data) => (
-            <div key={data.id} className="w-full md:w-1/3 p-3 ">
-              <div className="rounded-lg border-2 bg-opacity-100">
-                <div className="text-center text-neutral-content rounded-lg h-full ">
-                  <div className="h-full flex flex-col justify-center shadow-lg  ">
-                    <p className="font-semibold p-4 text-black overflow-hidden overflow-ellipsis">
-                      {data.description}
-                    </p>
-                    <p className="font-sans text-end mr-4 text-black pb-2">
-                      - {data.category}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="pt-4 ">
-      <div className="flex flex-col text-center w-full ">
-         
-         <h1 className="sm:text-3xl text-2xl font-serif font-semibold title-font pt-1 text-red-600">
- Poems
-   </h1>
-   <hr
-     className="w-48 h-1 mx-auto my-4 rounded border-collapse"
-     style={{ backgroundColor: "red" }}
-   />
- </div>
- 
- <div className="flex flex-wrap md:flex justify-between p-2 md:p-6 rounded-md shadow-md border border-b-2">
-        {data.Poem.slice(0, 10).map((data) => (
-          <div key={data.id} className="w-full md:w-1/3 p-3 ">
-            <div className="rounded-lg border-2 bg-opacity-100">
-              <div className="text-center text-neutral-content rounded-lg h-full ">
-                <div className="h-full flex flex-col justify-center shadow-lg  ">
-                  <p className="font-semibold p-4 text-black overflow-hidden overflow-ellipsis">
-                    {data.description}
-                  </p>
-                  <p className="font-sans text-end mr-4 text-black pb-2">
-                    - {data.category}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      </div>
-      </div>
-    </>
-  );
-};
-
-export default PoetView;
+      
+      </>
+  )}
+  export default PoetView

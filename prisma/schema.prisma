@@ -1,7 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -49,7 +48,6 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
-
 }
 
 model Shayari {
@@ -59,22 +57,41 @@ model Shayari {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   PoetId      String   @db.ObjectId
-  isfeatured  Boolean @default(false)
-  poet        Poet     @relation(fields: [PoetId], references: [id])
+  isfeatured  Boolean  @default(false)
+  poet        Poet     @relation(fields: [PoetId], references: [id],onDelete: Cascade)
 }
 
+model Poem {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  description String?
+  category    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  PoetId      String   @db.ObjectId
+  isfeatured  Boolean  @default(false)
+  poet        Poet     @relation(fields: [PoetId], references: [id],onDelete: Cascade)
+}
 
+model Quote {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  description String?
+  category    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isfeatured  Boolean  @default(false)
+}
 
 model Poet {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String?
-  image     String?
-  borndate  DateTime? 
-  dieddate  DateTime?
-  gender    Gender?  // Using the Gender enum type
-  location  String?
-  isfeatured Boolean @default(true)
-  Shayari          Shayari[]
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  name       String?
+  image      String?
+  borndate   DateTime?
+  dieddate   DateTime?
+  gender     Gender? // Using the Gender enum type
+  location   String?
+  isfeatured Boolean   @default(false)
+  Shayari    Shayari[]
+  Poem       Poem[]
 }
 
 enum Gender {
@@ -82,7 +99,6 @@ enum Gender {
   FEMALE
   OTHERS
 }
-
 
 model VerificationRequest {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId

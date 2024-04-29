@@ -1,11 +1,17 @@
 import Image from "next/image";
 import HeroPage from "../app/components/hero"
+import Featured from "../app/featured/page"
 
-export default function Home() {
+export default async function Home() {
+
+  
+
   return (
-   <div className="bg-orange-500">
+    <div className="container mx-auto w-full h-full">
     
-    <HeroPage/>
+
+    <Featured/>
+
    </div>
   );
 }

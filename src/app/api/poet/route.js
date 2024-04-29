@@ -13,7 +13,8 @@ cloudinary.config({
 
 export async function GET(request) {
   try {
-    const data = await db.poet.findMany();
+    const data = await db.poet.findMany({
+    });
     return NextResponse.json({ data, success: true });
   } catch (error) {
     return NextResponse.json({ error: "Failed to fetch poets", success: false }, { status: 500 });
@@ -28,11 +29,9 @@ export async function POST(request) {
   const dieddate = await data.get("dieddate");
   const gender = await data.get("gender");
   const location = await data.get("location");
+  
+  const isfeatured = await Boolean(data.get("isfeatured"));
 
-  // Validate form data
-  if (!image || !name || !borndate || !dieddate || !gender || !location) {
-    return NextResponse.json({ error: "All fields are required", success: false }, { status: 400 });
-  }
 
   // Handle file upload to Cloudinary
   let imageUrl;
@@ -58,6 +57,7 @@ export async function POST(request) {
         dieddate:new Date(dieddate) ,
         gender,
         location,
+        isfeatured,
         image: imageUrl,
       },
     });

@@ -5,9 +5,6 @@ import { db } from "@/lib/db";
 
 export default async function Home() {
 
-  const posts = await db.Post.findMany({
-    
-  })
 
   
 
@@ -16,11 +13,7 @@ export default async function Home() {
     
 <HeroPage/>
     <Featured/>
-    <div>
-      {posts.map((i)=>(
-        <div key={i.id}> {i.description} </div>
-      ))}
-    </div>
+    
 
    </div>
   );

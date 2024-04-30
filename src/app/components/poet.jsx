@@ -46,7 +46,7 @@ const SinglePoetView = ({ singlepoetdata }) => {
                     <h2 className="text-3xl font-semibold text-center md:text-start text-white shadow-lg mb-2">
                       {singlepoetdata.name}  <span>
                     <WhatsappShareButton
-                      url={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${singlepoetdata.id}`}
+                      url={`${process.env.NEXT_PUBLIC_BASE_URL}/poet/${singlepoetdata.id}`}
                       title={`${singlepoetdata.name}"The Poet From The Kavitva Site"`}
                       separator=":: "
                     >

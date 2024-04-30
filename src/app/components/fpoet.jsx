@@ -14,13 +14,13 @@ const FeaturedPoet = ({ poetData }) => {
                   <p className="font-semibold p-4 text-black overflow-hidden overflow-ellipsis">
                     {item.description}
                   </p>
-                  <div>
+                  <div className="mr-3 items-end">
                     <WhatsappShareButton
                       url={`${process.env.NEXT_PUBLIC_BASE_URL}`}
                       title={
-                        `${item.description}`
+                        `${item.description}` 
                       }
-                      separator=":: "
+                      separator={""}
                     >
                       <WhatsappIcon size={32} round />
                     </WhatsappShareButton>

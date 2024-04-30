@@ -2,22 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import Heading from "@/components/ui/heading";
-import Blogcompo from "../components/blogcompo";
+import AllCompo from "../components/allcompo"
 
-export default async function HomeBlog() {
-  const data = await db.Post.findMany({
+export default async function HomePoem() {
+  const data = await db.Poem.findMany({
     include: {
-      user: true,
-    },
+      poet:true
+    }
+  
   });
 
   return (
-    <div className="container rounded-md mx-auto mt-8 bg-slate-100">
+    <div className="container mx-auto mt-8 bg-red-500 rounded-md">
       {" "}
       
-      <Heading name={"Recent Blogs"} />
+      <Heading name={"Poems"} />
 
-  <Link href={`/blog`}>
+  <Link href={`/poem`}>
     <span className="font-sans text-2xl font-bold text-blue-600 rounded-lg container mx-auto flex justify-end ">
       See all{">"}
     </span>
@@ -25,7 +26,7 @@ export default async function HomeBlog() {
 
 
       <div className="container flex justify-between">
-        <Blogcompo blogdata={data.slice(0, 3).reverse()} />
+        <AllCompo resultdata={data.slice(0, 6).reverse()} />
         
       </div>
    

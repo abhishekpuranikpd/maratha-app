@@ -13,7 +13,7 @@ export default async function HomePoem() {
   });
 
   return (
-    <div className="container mx-auto mt-8 bg-red-500 rounded-md">
+    <div className=" mt-8 bg-red-500 rounded-md">
       {" "}
       
       <Heading name={"Poems"} />
@@ -25,7 +25,7 @@ export default async function HomePoem() {
   </Link>
 
 
-      <div className="container flex justify-between">
+      <div className=" flex justify-between">
         <AllCompo resultdata={data.slice(0, 6).reverse()} />
         
       </div>

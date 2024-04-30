@@ -12,7 +12,7 @@ export default async function HomeBlog() {
   });
 
   return (
-    <div className="container rounded-md mx-auto mt-8 bg-slate-100">
+    <div className=" rounded-md  mt-8 bg-slate-100">
       {" "}
       
       <Heading name={"Recent Blogs"} />
@@ -24,7 +24,7 @@ export default async function HomeBlog() {
   </Link>
 
 
-      <div className="container flex justify-between">
+      <div className="flex justify-between">
         <Blogcompo blogdata={data.slice(0, 3).reverse()} />
         
       </div>

@@ -13,19 +13,19 @@ export default async function HomeShayari() {
   });
 
   return (
-    <div className="container mx-auto mt-8 bg-yellow-500 rounded-md">
+    <div className=" mt-8 bg-yellow-500 rounded-md">
       {" "}
       
       <Heading name={"Shayaris"} />
 
   <Link href={`/shayari`}>
-    <span className="font-sans text-2xl font-bold text-blue-600 rounded-lg container mx-auto flex justify-end ">
+    <span className="font-sans text-2xl font-bold text-blue-600 rounded-lg  flex justify-end ">
       See all{">"}
     </span>
   </Link>
 
 
-      <div className="container flex justify-between">
+      <div className=" flex justify-between">
         <AllCompo resultdata={data.slice(0, 6).reverse()} />
         
       </div>

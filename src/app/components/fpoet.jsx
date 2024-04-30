@@ -1,6 +1,6 @@
-
-import Link from 'next/link';
-
+"use client"
+import Link from "next/link";
+import { WhatsappShareButton, WhatsappIcon } from "next-share";
 
 const FeaturedPoet = ({ poetData }) => {
   return (
@@ -14,7 +14,19 @@ const FeaturedPoet = ({ poetData }) => {
                   <p className="font-semibold p-4 text-black overflow-hidden overflow-ellipsis">
                     {item.description}
                   </p>
-                  {item.poet && ( 
+                  <div>
+                    <WhatsappShareButton
+                      url={`${process.env.NEXT_PUBLIC_BASE_URL}`}
+                      title={
+                        `${item.description}`
+                      }
+                      separator=":: "
+                    >
+                      <WhatsappIcon size={32} round />
+                    </WhatsappShareButton>
+                  </div>
+
+                  {item.poet && (
                     <p className="font-sans text-end mr-4 text-black pb-2">
                       <Link href={`/poet/${item.poet.id}`}>
                         {item.poet.name}
@@ -34,8 +46,3 @@ const FeaturedPoet = ({ poetData }) => {
 };
 
 export default FeaturedPoet;
-
-
-
-
-

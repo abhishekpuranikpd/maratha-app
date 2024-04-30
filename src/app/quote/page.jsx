@@ -3,6 +3,8 @@ import { db } from "../../lib/db"
 import Link from 'next/link';
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Featured from '../featured/page';
+import Heading from '@/components/ui/heading';
 
 const featchquote = async () => {
   try {
@@ -22,7 +24,12 @@ export default async function Quote() {
   const quotedata = await featchquote();
 
   return (
-    <div className="flex flex-wrap md:flex justify-between md:p-2 rounded-full">
+    <div>
+    <div className=" container w-full flex flex-col md:flex-row gap-8 py-6">
+
+      <div className="md:p-2 md:w-3/4 border-2 rounded-md shadow-md">  
+        <Heading name={"Quotes"}/><div className="flex flex-wrap ">
+     
     {quotedata.map(data => (
       <div key={data.id} className="w-full md:w-1/3 p-3">
         <div className="rounded-lg border-2 bg-opacity-100">
@@ -40,7 +47,11 @@ export default async function Quote() {
         </div>
       </div>
     ))}
-  </div>
+   </div>{" "}</div>
+      
+      <div className="md:w-1/4"> <Featured /></div>
+     </div>
+     </div>
   
   );
 }

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import PoetNav from "../../../components/poetnav";
+import Heading from "@/components/ui/heading"
 
 const PoetEbook = async ({ params }) => {
   const poetid = params.poetid;
@@ -89,16 +90,7 @@ const PoetEbook = async ({ params }) => {
     
         </div>
       </div>
-      <div className="flex flex-col text-center w-full ">
-         
-         <h1 className="sm:text-3xl text-2xl font-serif font-semibold title-font pt-1 text-red-600">
-E Books of {data.name} Will Be Adding Soon
-   </h1>
-   <hr
-     className="w-48 h-1 mx-auto my-4 rounded border-collapse"
-     style={{ backgroundColor: "red" }}
-   />
- </div>
+<Heading name={"E-Books"}/>
       </>
   )}
   export default PoetEbook

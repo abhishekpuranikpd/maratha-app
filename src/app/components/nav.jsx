@@ -21,6 +21,8 @@ const NavBar = () => {
     { title: "Poets", link: "/poet" },
     { title: "Poems", link: "/poem" },
     { title: "Quotes", link: "/quote" },
+    
+    { title: "Blogs", link: "/blog" },
   ];
 
   const toggleDrawer = () => {

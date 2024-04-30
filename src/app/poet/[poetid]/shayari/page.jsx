@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card"
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import PoetNav from "../../../components/poetnav";
+import Heading from '@/components/ui/heading';
 
 const PoetShayariView = async ({ params }) => {
   const poetid = params.poetid;
@@ -83,20 +84,12 @@ const PoetShayariView = async ({ params }) => {
 <div className="pb-2">
           <PoetNav poetid={poetid} />
         </div>
-{/* Shayari */}
-<div className="flex flex-wrap md:flex justify-between md:p-8 rounded-full">
-<div className="flex flex-col text-center w-full ">
-         
-         <h1 className="sm:text-3xl text-2xl font-serif font-semibold title-font pt-1 text-red-600">
-     Shayaris of {data.name}
-   </h1>
-   <hr
-     className="w-48 h-1 mx-auto my-4 rounded border-collapse"
-     style={{ backgroundColor: "red" }}
-   />
- </div>
+<Heading name={"Shayari"}/>
+
+<div className="grid grid-cols-1 p-2 gap-4 md:grid-cols-3 xl:grid-cols-3">
+
     {data.Shayari.map(data => (
-      <div key={data.id} className="w-full md:w-1/3 p-3 ">
+      <div key={data.id} className="w-full p-3 ">
         <div className="rounded-lg border-2 bg-opacity-100">
           <div className="text-center text-neutral-content rounded-lg h-full ">
             <div className="h-full flex flex-col justify-center shadow-lg  ">

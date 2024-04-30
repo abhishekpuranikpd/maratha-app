@@ -2,6 +2,7 @@ import FeaturedPoet from "../components/fpoet";
 import Poetf from "../components/fpoetreal";
 import { db } from "../../lib/db";
 import Heading from "@/components/ui/heading";
+import Link from "next/link";
 
 const Featured = async () => {
   const data = await db.Quote.findMany({
@@ -18,9 +19,6 @@ const Featured = async () => {
     where: {
       isfeatured: true,
     },
-    include : {
-      poet :true
-    },
   });
   const Shayaridata = await db.Shayari.findMany({
     where: {
@@ -28,13 +26,13 @@ const Featured = async () => {
     },
   });
   return (
-    <div className="border-2 rounded-md shadow-md">
+    <div className="container mx-auto border-2 rounded-md shadow-md pt-4">
       <div className="flex flex-col text-center w-full ">
         <Heading name={"Featured Collections Of the Day"} />
 
       </div>
 
-      <div className="grid grid-cols-1  gap-4 p-2 rounded-md  mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2  gap-4 p-2 rounded-md  mb-4">
         <div class="flex h-full rounded-lg flex-wrap bg-red-400 ">
           <div class="w-full px-8 py-6">
             
@@ -52,7 +50,7 @@ const Featured = async () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 rounded-md gap-4 p-2 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 rounded-md gap-4 p-2 mb-4">
         <div class="flex h-full rounded-lg flex-wrap ">
           <div class="w-full px-8 py-6 bg-teal-400">
            <Heading name={"Shayari"}/>
@@ -61,9 +59,13 @@ const Featured = async () => {
         </div>
         <div class="flex h-full rounded-lg flex-wrap ">
           <div class="w-full px-8 py-6 bg-gray-300 rounded-md">
-            <Heading name={"Poet"}/>
-
-            <Poetf poetData={poetresult} />
+          {poetresult.map((poet) => (
+              <Link key={poet.id} href={`/poet/${poet.id}`}>
+               
+                  <Poetf poetData={poetresult} />
+              
+              </Link>
+            ))}
           </div>
         </div>
       </div>

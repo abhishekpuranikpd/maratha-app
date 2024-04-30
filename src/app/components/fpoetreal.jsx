@@ -2,7 +2,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Poetf = ({ poetData }) => {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center ">
       {poetData && poetData.length > 0 ? (
         poetData.map(data => (
           <div className="max-w-xs m-4" key={data.id}>
@@ -18,6 +18,7 @@ const Poetf = ({ poetData }) => {
                 {data.name}
               </h2>
             
+              <p className="font-sans text-center mr-4 text-black pb-2">{data.location}</p>
             </div>
           </div>
         ))

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import PoetNav from "../../components/poetnav";
+import Heading from "@/components/ui/heading";
 
 const PoetView = async ({ params }) => {
   const poetid = params.poetid;
@@ -91,16 +92,7 @@ const PoetView = async ({ params }) => {
       <div className="container mx-auto w-full h-full">
       <div className="">
         {" "}
-        <div className="flex flex-col text-center w-full ">
-         
-                <h1 className="sm:text-3xl text-2xl font-serif font-semibold title-font pt-1 text-red-600">
-            Shayari
-          </h1>
-          <hr
-            className="w-48 h-1 mx-auto my-4 rounded border-collapse"
-            style={{ backgroundColor: "red" }}
-          />
-        </div>
+        <Heading name={"Shayari"}/>
         <div className="flex flex-wrap md:flex justify-between p-2 md:p-6">
           {data.Shayari.slice(0, 10).map((data) => (
             <div key={data.id} className="w-full md:w-1/3 p-3 ">
@@ -122,16 +114,7 @@ const PoetView = async ({ params }) => {
       </div>
 
       <div className="pt-4 ">
-      <div className="flex flex-col text-center w-full ">
-         
-         <h1 className="sm:text-3xl text-2xl font-serif font-semibold title-font pt-1 text-red-600">
- Poems
-   </h1>
-   <hr
-     className="w-48 h-1 mx-auto my-4 rounded border-collapse"
-     style={{ backgroundColor: "red" }}
-   />
- </div>
+     <Heading name={"Poems"}/>
  
  <div className="flex flex-wrap md:flex justify-between p-2 md:p-6 rounded-md shadow-md border border-b-2">
         {data.Poem.slice(0, 10).map((data) => (
